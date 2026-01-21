@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyBanHang.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,18 @@ namespace QuanLyBanHang
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnlsp_Click(object sender, EventArgs e)
+        {
+            frmLoaiSanPham f = new frmLoaiSanPham();
+            f.ShowDialog();
+        }
+
+        private void btnHangSX_Click(object sender, EventArgs e)
+        {
+            frmHangSanXuat f = new frmHangSanXuat();
+            f.ShowDialog();
         }
     }
 }

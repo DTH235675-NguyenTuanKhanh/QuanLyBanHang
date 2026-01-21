@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace QuanLyBanHang.Forms
 {
-    public partial class frmLoaiSanPham : Form
+    public partial class frmHangSanXuat : Form
     {
         QLBHDbContext context = new QLBHDbContext();  // Khởi tạo biến ngữ cảnh CSDL
         bool xuLyThem = false;  // Kiểm tra có nhấn vào nút Thêm hay không?
-        int id;  // Lấy mã loại sản phẩm (dùng cho Sửa và Xóa)
-        public frmLoaiSanPham()
+        int id;
+        public frmHangSanXuat()
         {
             InitializeComponent();
         }
@@ -24,28 +24,33 @@ namespace QuanLyBanHang.Forms
         {
             btnLuu.Enabled = giaTri;
             btnHuyBo.Enabled = giaTri;
-            txtTenLoai.Enabled = giaTri;
+            txtTenHangSanXuat.Enabled = giaTri;
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
         }
 
-        private void frmLoaiSanPham_Load(object sender, EventArgs e)
+        private void frmHangSanXuat_Load(object sender, EventArgs e)
         {
             BatTatChucNang(false);
-            List<LoaiSanPham> lsp = context.LoaiSanPham.ToList();
+            List<HangSanXuat> hsx = context.HangSanXuat.ToList();
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = lsp;
-            txtTenLoai.DataBindings.Clear();
-            txtTenLoai.DataBindings.Add("Text", bindingSource, "TenLoai", false, DataSourceUpdateMode.Never);
+            bindingSource.DataSource = hsx;
+            txtTenHangSanXuat.DataBindings.Clear();
+            txtTenHangSanXuat.DataBindings.Add("Text", bindingSource, "TenLoai", false, DataSourceUpdateMode.Never);
             dataGridView.DataSource = bindingSource;
+        }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             xuLyThem = true;
             BatTatChucNang(true);
-            txtTenLoai.Clear();
+            txtTenHangSanXuat.Clear();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -55,43 +60,8 @@ namespace QuanLyBanHang.Forms
             id = Convert.ToInt32(dataGridView.CurrentRow.Cells["ID"].Value.ToString());
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtTenLoai.Text))
-                MessageBox.Show("Vui lòng nhập tên loại sản phẩm?", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-            {
-                if (xuLyThem)
-                {
-                    LoaiSanPham lsp = new LoaiSanPham();
-                    lsp.TenLoai = txtTenLoai.Text;
-                    context.LoaiSanPham.Add(lsp);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    LoaiSanPham lsp = context.LoaiSanPham.Find(id);
-                    if (lsp != null)
-                    {
-                        lsp.TenLoai = txtTenLoai.Text;
-                        context.LoaiSanPham.Update(lsp);
-                        context.SaveChanges();
-                    }
-                }
-                frmLoaiSanPham_Load(sender, e);
-            }
-        }
-
-        private void btnHuyBo_Click(object sender, EventArgs e)
-        {
-           
-                frmLoaiSanPham_Load(sender, e);
-            
-        }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
-           
             if (MessageBox.Show("Xác nhận xóa loại sản phẩm?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 id = Convert.ToInt32(dataGridView.CurrentRow.Cells["ID"].Value.ToString());
@@ -101,8 +71,40 @@ namespace QuanLyBanHang.Forms
                     context.LoaiSanPham.Remove(lsp);
                 }
                 context.SaveChanges();
-                frmLoaiSanPham_Load(sender, e);
+                frmHangSanXuat_Load(sender, e);
             }
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTenHangSanXuat.Text))
+                MessageBox.Show("Vui lòng nhập tên loại sản phẩm?", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                if (xuLyThem)
+                {
+                    LoaiSanPham lsp = new LoaiSanPham();
+                    lsp.TenLoai = txtTenHangSanXuat.Text;
+                    context.LoaiSanPham.Add(lsp);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    LoaiSanPham lsp = context.LoaiSanPham.Find(id);
+                    if (lsp != null)
+                    {
+                        lsp.TenLoai = txtTenHangSanXuat.Text;
+                        context.LoaiSanPham.Update(lsp);
+                        context.SaveChanges();
+                    }
+                }
+                frmHangSanXuat_Load(sender, e);
+            }
+        }
+
+        private void btnHuyBo_Click(object sender, EventArgs e)
+        {
+            frmHangSanXuat_Load(sender, e);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

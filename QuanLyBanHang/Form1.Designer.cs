@@ -28,12 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            btnlsp = new Button();
+            btnHangSX = new Button();
+            SuspendLayout();
+            // 
+            // btnlsp
+            // 
+            btnlsp.Location = new Point(120, 93);
+            btnlsp.Margin = new Padding(3, 4, 3, 4);
+            btnlsp.Name = "btnlsp";
+            btnlsp.Size = new Size(197, 76);
+            btnlsp.TabIndex = 0;
+            btnlsp.Text = "Loại Sản Phẩm";
+            btnlsp.UseVisualStyleBackColor = true;
+            btnlsp.Click += btnlsp_Click;
+            // 
+            // btnHangSX
+            // 
+            btnHangSX.Location = new Point(423, 93);
+            btnHangSX.Margin = new Padding(3, 4, 3, 4);
+            btnHangSX.Name = "btnHangSX";
+            btnHangSX.Size = new Size(197, 76);
+            btnHangSX.TabIndex = 1;
+            btnHangSX.Text = "Hãng Sản Xuất";
+            btnHangSX.UseVisualStyleBackColor = true;
+            btnHangSX.Click += btnHangSX_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(914, 600);
+            Controls.Add(btnHangSX);
+            Controls.Add(btnlsp);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnlsp;
+        private Button btnHangSX;
     }
 }

@@ -54,6 +54,7 @@
             btnThoat.TabIndex = 7;
             btnThoat.Text = "Thoat";
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnHuyBo
             // 
