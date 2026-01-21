@@ -37,7 +37,7 @@ namespace QuanLyBanHang.Forms
             BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = hsx;
             txtTenHangSanXuat.DataBindings.Clear();
-            txtTenHangSanXuat.DataBindings.Add("Text", bindingSource, "TenLoai", false, DataSourceUpdateMode.Never);
+            txtTenHangSanXuat.DataBindings.Add("Text", bindingSource, "TenHangSanXuat", false, DataSourceUpdateMode.Never);
             dataGridView.DataSource = bindingSource;
         }
 
@@ -62,13 +62,13 @@ namespace QuanLyBanHang.Forms
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Xác nhận xóa loại sản phẩm?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Xác nhận xóa hãng sản xuất?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 id = Convert.ToInt32(dataGridView.CurrentRow.Cells["ID"].Value.ToString());
-                LoaiSanPham lsp = context.LoaiSanPham.Find(id);
-                if (lsp != null)
+               HangSanXuat hsx = context.HangSanXuat.Find(id);
+                if (hsx != null)
                 {
-                    context.LoaiSanPham.Remove(lsp);
+                    context.HangSanXuat.Remove(hsx);
                 }
                 context.SaveChanges();
                 frmHangSanXuat_Load(sender, e);
@@ -78,23 +78,23 @@ namespace QuanLyBanHang.Forms
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenHangSanXuat.Text))
-                MessageBox.Show("Vui lòng nhập tên loại sản phẩm?", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập tên hãng sản xuất?", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 if (xuLyThem)
                 {
-                    LoaiSanPham lsp = new LoaiSanPham();
-                    lsp.TenLoai = txtTenHangSanXuat.Text;
-                    context.LoaiSanPham.Add(lsp);
+                    HangSanXuat hsx = new HangSanXuat();
+                    hsx.TenHangSanXuat = txtTenHangSanXuat.Text;
+                    context.HangSanXuat.Add(hsx);
                     context.SaveChanges();
                 }
                 else
                 {
-                    LoaiSanPham lsp = context.LoaiSanPham.Find(id);
-                    if (lsp != null)
+                    HangSanXuat hsx = context.HangSanXuat.Find(id);
+                    if (hsx != null)
                     {
-                        lsp.TenLoai = txtTenHangSanXuat.Text;
-                        context.LoaiSanPham.Update(lsp);
+                        hsx.TenHangSanXuat = txtTenHangSanXuat.Text;
+                        context.HangSanXuat.Update(hsx);
                         context.SaveChanges();
                     }
                 }
