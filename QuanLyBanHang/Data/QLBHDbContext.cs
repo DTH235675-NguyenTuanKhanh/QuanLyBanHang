@@ -14,7 +14,7 @@ namespace QuanLyBanHang.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database = QLBH;Trusted_Connection = True;TrustServerCertificate = True ");        
+            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database = QLBH;Trusted_Connection = True;TrustServerCertificate = True ");        
         }
     }
 }
