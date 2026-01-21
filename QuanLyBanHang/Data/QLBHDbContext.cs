@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace QuanLyBanHang.Data
 {
@@ -14,7 +15,15 @@ namespace QuanLyBanHang.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database = QLBH;Trusted_Connection = True;TrustServerCertificate = True ");        
+
+            //optionsBuilder.UseSqlServer("Data Source=.\\;Database = QLBH;Trusted_Connection = True;TrustServerCertificate = True ");
+            //optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["QLBHConnectin"].ConnectionString);
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(
+                    "Data Source=.;Initial Catalog=QLBH;Integrated Security=True;TrustServerCertificate=True"
+                );
+            }
         }
     }
 }
