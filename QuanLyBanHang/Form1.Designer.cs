@@ -34,10 +34,9 @@
             // 
             // btnlsp
             // 
-            btnlsp.Location = new Point(120, 93);
-            btnlsp.Margin = new Padding(3, 4, 3, 4);
+            btnlsp.Location = new Point(105, 70);
             btnlsp.Name = "btnlsp";
-            btnlsp.Size = new Size(197, 76);
+            btnlsp.Size = new Size(172, 57);
             btnlsp.TabIndex = 0;
             btnlsp.Text = "Loại Sản Phẩm";
             btnlsp.UseVisualStyleBackColor = true;
@@ -45,10 +44,9 @@
             // 
             // btnHangSX
             // 
-            btnHangSX.Location = new Point(423, 93);
-            btnHangSX.Margin = new Padding(3, 4, 3, 4);
+            btnHangSX.Location = new Point(370, 70);
             btnHangSX.Name = "btnHangSX";
-            btnHangSX.Size = new Size(197, 76);
+            btnHangSX.Size = new Size(172, 57);
             btnHangSX.TabIndex = 1;
             btnHangSX.Text = "Hãng Sản Xuất";
             btnHangSX.UseVisualStyleBackColor = true;
@@ -56,12 +54,11 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(btnHangSX);
             Controls.Add(btnlsp);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);

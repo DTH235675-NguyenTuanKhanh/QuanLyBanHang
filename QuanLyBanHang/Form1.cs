@@ -20,14 +20,14 @@ namespace QuanLyBanHang
 
         private void btnlsp_Click(object sender, EventArgs e)
         {
-            frmLoaiSanPham f = new frmLoaiSanPham();
-            f.ShowDialog();
+            frmLoaiSanPham f1 = new frmLoaiSanPham();
+            f1.ShowDialog();
         }
 
         private void btnHangSX_Click(object sender, EventArgs e)
         {
-            frmHangSanXuat f = new frmHangSanXuat();
-            f.ShowDialog();
+            frmHangSanXuat f2 = new frmHangSanXuat();
+            f2.ShowDialog();
         }
     }
 }
