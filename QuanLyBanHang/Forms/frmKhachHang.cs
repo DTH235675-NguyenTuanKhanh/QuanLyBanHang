@@ -117,7 +117,12 @@ namespace QuanLyBanHang.Forms
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
+            Close();
+        }
 
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 

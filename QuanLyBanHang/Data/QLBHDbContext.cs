@@ -21,7 +21,7 @@ namespace QuanLyBanHang.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                    "Data Source=.\\SQLEXPRESS;Initial Catalog=QLBH;Integrated Security=True;TrustServerCertificate=True"
+                    "Data Source=.;Initial Catalog=QLBH;Integrated Security=True;TrustServerCertificate=True"
                 );
             }
         }
